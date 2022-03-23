@@ -5,21 +5,38 @@
  */
 package com.mood.exp;
 
+/**
+ * Hello world!
+ */
 public class MoodAnalyzer {
-	public static String analyseMood(String message) {
-		if (message.toLowerCase().contains("sad")) {
-			return "Sad";
-		} else if (message.toLowerCase().contains("happy")) {
-			return "Happy";
-		}
-		return null;
+	public static String message;
+
+	public MoodAnalyser() {
+    }
+
+	public MoodAnalyser(String message) {
+        this.message = message;
+        analyseMood();
+
+    }
+
+	public String getMessage() {
+		return message;
 	}
 
-	public static void main(String[] args) {
-		String mood = MoodAnalyzer.analyseMood("User is Happy");
-		System.out.println(mood);
-		mood = MoodAnalyzer.analyseMood("User is Sad");
-		System.out.println(mood);
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-}
+	public static String analyseMood() {
+        try {
+            if (message.toLowerCase().contains("sad")) {
+                return "Sad";
+            } else {
+                return "Happy";
+            }
+
+        } catch (NullPointerException e) {
+            return "Exception Handled";
+        }
+    }
